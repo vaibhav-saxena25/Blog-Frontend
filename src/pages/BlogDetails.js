@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 import {Box, Typography,InputLabel, TextField, Button} from '@mui/material'
 import toast from 'react-hot-toast';
+import { server } from '../index'
 
 
 const BlogDetails = () => {
@@ -22,7 +23,7 @@ const BlogDetails = () => {
     //get blog details
     const getBlogDetail = async(req,res)=>{
         try{
-            const {data} = await axios.get(`/api/v1/blog/get-blog/${id}`)
+            const {data} = await axios.get(`${server}/api/v1/blog/get-blog/${id}`)
             if(data?.success){
                 setBlog(data?.blog);
                 setInputs({title:data?.blog.title,description:data?.blog.description,image:data?.blog.image})
@@ -47,7 +48,7 @@ const BlogDetails = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            const {data} = await axios.put(`/api/v1/blog/update-blog/${id}`,
+            const {data} = await axios.put(`${server}/api/v1/blog/update-blog/${id}`,
                 {
                     title:inputs.title,
                     description:inputs.description,

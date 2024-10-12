@@ -3,6 +3,7 @@ import {Box,Typography,TextField,Button} from '@mui/material'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+import { server } from '../index'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Register = () => {
  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/v1/user/register-user', {
+      const { data } = await axios.post(`${server}/api/v1/user/register-user`, {
         username: inputs.name, // Change 'name' to 'username' to match schema
         email: inputs.email,
         password: inputs.password

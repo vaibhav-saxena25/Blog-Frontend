@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import BlogCard from '../components/BlogCard'
+import { server } from '../index'
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const getAllBlogs = async(req,res)=>{
     try{
-      const {data} = await axios.get('/api/v1/blog/all-blogs')
+      const {data} = await axios.get(`${server}/api/v1/blog/all-blogs`)
 
       console.log(data);
     
