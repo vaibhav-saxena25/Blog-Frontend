@@ -12,6 +12,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Box } from '@mui/material';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import { server } from '../index';
 
 
 
@@ -32,7 +33,7 @@ export default function BlogCard({title,description,image,username,time,id,isUse
   };
   const handleDelete= async()=>{
     try{
-      const {data} = await axios.delete(`/api/v1/blog/delete-blog/${id}`)
+      const {data} = await axios.delete(`${server}/api/v1/blog/delete-blog/${id}`)
       if(data?.success){
         alert('Blog Deleted');
         window.location.reload();
