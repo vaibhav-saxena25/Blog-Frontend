@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'
 import { store } from './redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export const server = 'http://localhost:8080';
+export const server = 'https://blog-app-backend-gkdv.onrender.com';
 root.render(
   <Provider store = {store}>
   <BrowserRouter>
